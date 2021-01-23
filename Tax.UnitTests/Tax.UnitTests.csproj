@@ -153,6 +153,7 @@
     <Compile Include="Setup\AutoMapperSetup.cs" />
     <Compile Include="Setup\ConfigurationSetup.cs" />
     <Compile Include="Validator\LocationValidationTest.cs" />
+    <Compile Include="Validator\OrderValidationTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

@@ -8,10 +8,14 @@ namespace Tax.Services.Validator
     {
         public static bool IsValid(this Order order, out string message)
         {
-           
-             if (!string.IsNullOrEmpty(order.ToCountry) && (order.ToCountry.Length != 2 || order.ToCountry.Any(char.IsDigit)))
+           if (string.IsNullOrEmpty(order.ToCountry))
             {
-                message = "Country must be 2 letter ISO";
+                message = "To Country is required";
+                return false;
+            }
+             else if (!string.IsNullOrEmpty(order.ToCountry) && (order.ToCountry.Length != 2 || order.ToCountry.Any(char.IsDigit)))
+            {
+                message = "To Country must be 2 letter ISO";
                 return false;
             }
             else if (!string.IsNullOrEmpty(order.ToCountry) && order.ToCountry == "US" && string.IsNullOrEmpty(order.ToZip))

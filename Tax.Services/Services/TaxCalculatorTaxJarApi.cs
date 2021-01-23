@@ -84,7 +84,6 @@ namespace Tax.Services.Services
             }
         }
 
-
         public async Task<CustomActionResult<decimal>> GetTaxRateForLocation(Location address)
         {
             string validMessage = string.Empty;
