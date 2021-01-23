@@ -4,8 +4,17 @@ namespace Tax.Services.Validator
     using System.Linq;
     using Tax.Models.Models;
 
+    /// <summary>
+    /// The order validator extension class.
+    /// </summary>
     public static class OrderValidator
     {
+        /// <summary>
+        /// Check whether the model is valid
+        /// </summary>
+        /// <param name="order">the order model</param>
+        /// <param name="message">the validation message return</param>
+        /// <returns>true for valid model, false for invalid</returns>
         public static bool IsValid(this Order order, out string message)
         {
            if (string.IsNullOrEmpty(order.ToCountry))

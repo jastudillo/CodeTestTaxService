@@ -41,6 +41,9 @@ namespace Tax.Services.Services
         /// </summary>
         private readonly IMapper _mapper;
 
+        /// <summary>
+        /// The TaxCalculatorTaxJarApi constructor.
+        /// </summary>
         public TaxCalculatorTaxJarApi(IConfiguration configuration, IMapper mapper)
         {
             this._apiKey = configuration.GetSection("TaxJar").GetSection("ApiKey").Value;
@@ -49,6 +52,13 @@ namespace Tax.Services.Services
             this._mapper = mapper;
         }
 
+        /// <summary>
+        /// Gets the tax amount for a given order
+        /// </summary>
+        /// <param name="order">
+        /// the order
+        /// </param>
+        /// <returns> the tax amount for a given order</returns>
         public async Task<CustomActionResult<decimal>> GetTaxForOrder(Models.Models.Order order)
         {
             string validMessage = string.Empty;
@@ -84,6 +94,13 @@ namespace Tax.Services.Services
             }
         }
 
+        /// <summary>
+        /// Gets the tax rate  for a given location
+        /// </summary>
+        /// <param name="address">
+        /// the address
+        /// </param>
+        /// <returns>the tax rate as decimal</returns>
         public async Task<CustomActionResult<decimal>> GetTaxRateForLocation(Location address)
         {
             string validMessage = string.Empty;
