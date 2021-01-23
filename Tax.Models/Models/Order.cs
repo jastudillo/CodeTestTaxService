@@ -27,6 +27,11 @@ namespace Tax.Models.Models
         public string FromStreet { get; set; }
 
         /// <summary>
+        /// Gets or Sets the FromStreet.
+        /// </summary>
+        public string FromState { get; set; }
+
+        /// <summary>
         /// Gets or Sets the ToCountry.
         /// </summary>
         public string ToCountry { get; set; }

@@ -149,7 +149,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\TaxForLocationTest.cs" />
+    <Compile Include="Services\TaxForOrderTest.cs" />
+    <Compile Include="Services\TaxRateForLocationTest.cs" />
     <Compile Include="Setup\AutoMapperSetup.cs" />
     <Compile Include="Setup\ConfigurationSetup.cs" />
     <Compile Include="Validator\LocationValidationTest.cs" />

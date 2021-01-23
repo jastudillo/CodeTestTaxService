@@ -9,7 +9,7 @@ using Tax.UnitTests.Setup;
 namespace Tax.UnitTests.Services
 {
     [TestClass]
-    public class TaxForLocationTest
+    public class TaxRateForLocationTest
     {
         private ITaxCalculator taxCalculator;
         [TestInitialize]
