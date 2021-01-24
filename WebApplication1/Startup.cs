@@ -56,7 +56,7 @@ namespace WebApplication1
                // gets the defaul tax calculator for client if self hosted
                var defaultTaxCalculator = Configuration.GetSection("Client").GetSection("TaxCalculator").Value;
 
-               //gets the tax calculator depending on variable above to instantiate the service
+               //gets the tax calculator depending on variables above to instantiate the service, picks a deafult if null for a client
                string taxCalculatorImplementation = isServiceMultipleClients && !string.IsNullOrEmpty(taxCalculatorForClient) ? taxCalculatorForClient : defaultTaxCalculator;
 
                // resolves the tax calculator, we can add as many as we want
