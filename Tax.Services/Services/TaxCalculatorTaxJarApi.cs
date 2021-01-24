@@ -100,6 +100,7 @@ namespace Tax.Services.Services
                 }
                 else
                 {
+                    result.Message = validMessage;
                     return result;
                 }
             }
@@ -173,6 +174,7 @@ namespace Tax.Services.Services
                 }
                 else
                 {
+                    result.Message = validMessage;
                     return result;
                 }
             }

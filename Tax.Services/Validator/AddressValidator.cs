@@ -19,6 +19,10 @@ namespace Tax.Services.Validator
         /// <returns>true for valid model, false for invalid</returns>
         public static bool IsValid(this Location location, out string message)
         {
+            if ( location != null)
+            {
+
+           
             if (string.IsNullOrEmpty(location.Zip))
             {
                 message = "Zip is required";
@@ -37,6 +41,12 @@ namespace Tax.Services.Validator
             }
             message = "Valid";
             return true;
+            }
+            else
+            {
+                message = "Model is null";
+                return false;
+            }
         }
     }
 }

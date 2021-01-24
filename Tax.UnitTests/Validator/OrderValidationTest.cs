@@ -7,6 +7,8 @@ namespace Tax.UnitTests.Validator
     [TestClass]
     public class OrderValidationTest
     {
+     
+
         [TestMethod]
         public void ToCountry_Required_Test()
         {
@@ -98,6 +100,17 @@ namespace Tax.UnitTests.Validator
 
             Assert.IsTrue(isValid == true);
             Assert.IsTrue(message == "Valid");
+        }
+
+        [TestMethod]
+        public void Model_Is_Null()
+        {
+            var order = (Order)null;
+            var message = string.Empty;
+            var isValid = order.IsValid(out message);
+
+            Assert.IsTrue(isValid == false);
+            Assert.IsTrue(message == "Model is null");
         }
     }
 }

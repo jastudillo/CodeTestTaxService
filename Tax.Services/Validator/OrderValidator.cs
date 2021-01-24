@@ -17,6 +17,10 @@ namespace Tax.Services.Validator
         /// <returns>true for valid model, false for invalid</returns>
         public static bool IsValid(this Order order, out string message)
         {
+            if ( order != null)
+            {
+
+           
            if (string.IsNullOrEmpty(order.ToCountry))
             {
                 message = "To Country is required";
@@ -47,7 +51,13 @@ namespace Tax.Services.Validator
                 message = "Valid";
                 return true;
             }
-           
+            }
+            else
+            {
+                message = "Model is null";
+                return false;
+            }
+
         }
     }
 }
