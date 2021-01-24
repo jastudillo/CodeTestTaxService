@@ -9,7 +9,6 @@ namespace Tax.Services.Mapper
     {
         public MapperProfile()
         {
-            CreateMap<Location, Address>().ReverseMap();
             CreateMap<Tax.Models.Models.Order, Taxjar.Order>().ReverseMap();
         }
     }

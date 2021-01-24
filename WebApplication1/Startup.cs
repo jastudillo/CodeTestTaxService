@@ -37,7 +37,7 @@ namespace WebApplication1
             IMapper mapper = mapperConfig.CreateMapper();
             services.AddSingleton(mapper);
 
-            services.AddTransient<TaxCalculatorTaxJar>();
+            services.AddTransient<TaxCalculatorToBeImplemented>();
             services.AddTransient<TaxCalculatorTaxJarApi>();
 
             services.AddTransient<Func<string, ITaxCalculator>>(serviceProvider => clientName =>
@@ -46,30 +46,35 @@ namespace WebApplication1
                bool isServiceMultipleClients = Configuration.GetValue<bool>("MultipleClients");
 
                // if hosted for multiple clients, gets the client tax calculator from appSettings.json else retuns null
-               string taxCalculatorForClient = isServiceMultipleClients && !string.IsNullOrEmpty(clientName)? Configuration.GetSection("ClientTaxCalculators").GetChildren().ToList().Select(c => new
+               string taxCalculatorForClient = isServiceMultipleClients && !string.IsNullOrEmpty(clientName) ? Configuration.GetSection("ClientTaxCalculators").GetChildren().ToList().Select(c => new
                {
                    Name = c.GetValue<string>("Name"),
                    TaxCalculator = c.GetValue<string>("TaxCalculator")
-               }).Where(c => c.Name == clientName).FirstOrDefault()?.TaxCalculator : null;
+               }).Where(c => c.Name == clientName)
+               .FirstOrDefault()?.TaxCalculator : null;
 
                // gets the defaul tax calculator for client if self hosted
                var defaultTaxCalculator = Configuration.GetSection("Client").GetSection("TaxCalculator").Value;
 
                //gets the tax calculator depending on variable above to instantiate the service
-               string taxCalculatorImplementation = isServiceMultipleClients && !string.IsNullOrEmpty(taxCalculatorForClient)  ? taxCalculatorForClient : defaultTaxCalculator;
+               string taxCalculatorImplementation = isServiceMultipleClients && !string.IsNullOrEmpty(taxCalculatorForClient) ? taxCalculatorForClient : defaultTaxCalculator;
 
-               if (taxCalculatorImplementation == "TaxJar")
+               // resolves the tax calculator, we can add as many as we want
+               if (taxCalculatorImplementation == "TBI")
                {
-                   return serviceProvider.GetService<TaxCalculatorTaxJar>();
+                   // this service is to show, multiple tax calculator can be handle
+                   return serviceProvider.GetService<TaxCalculatorToBeImplemented>();
                }
                else if (taxCalculatorImplementation == "TaxJarApi")
                {
+                   // resolve using tax jar api tax calculator service
                    return serviceProvider.GetService<TaxCalculatorTaxJarApi>();
                }
                else
                {
+                   // we could also resolve with a default service if we would like
                    throw new NotImplementedException();
-               }             
+               }
            });
 
             services.AddControllers();

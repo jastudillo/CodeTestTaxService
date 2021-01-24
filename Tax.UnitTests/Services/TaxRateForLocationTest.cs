@@ -20,6 +20,12 @@ namespace Tax.UnitTests.Services
             taxCalculator = new TaxCalculatorTaxJarApi(configuration, mapper);
         }
 
+        [TestCleanup]
+        public void Cleanup()
+        {
+            //add code for clean up if needed
+        }
+
         [TestMethod]
         public async Task Test_Valid_Result_US_90405_5656()
         {

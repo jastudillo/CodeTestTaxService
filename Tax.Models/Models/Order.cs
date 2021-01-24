@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Tax.Models.Models
+﻿namespace Tax.Models.Models
 {
     public class Order
     {

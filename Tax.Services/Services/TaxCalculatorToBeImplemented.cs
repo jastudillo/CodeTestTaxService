@@ -10,7 +10,7 @@ namespace Tax.Services.Services
     using Tax.Models.Models;
     using Tax.Services.Services.Interfaces;
 
-    public class TaxCalculatorTaxJar : ITaxCalculator
+    public class TaxCalculatorToBeImplemented : ITaxCalculator
     {
         /// <summary>
         /// The api key.
@@ -22,11 +22,12 @@ namespace Tax.Services.Services
         /// </summary>
         private readonly string _apiUrl;
 
-        public TaxCalculatorTaxJar(IConfiguration configuration)
+        public TaxCalculatorToBeImplemented(IConfiguration configuration)
         {
             this._apiKey = configuration.GetSection("TaxJar").GetSection("ApiKey").Value;
             this._apiUrl = configuration.GetSection("TaxJar").GetSection("Url").Value;
         }
+
 
         public async Task<CustomActionResult<decimal>> GetTaxForOrder(Order order)
         {

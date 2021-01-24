@@ -12,12 +12,19 @@ namespace Tax.UnitTests.Services
     public class TaxForOrderTest
     {
         private ITaxCalculator taxCalculator;
+
         [TestInitialize]
         public void InitializeTest()
         {
             var mapper = new AutoMapperSetup().CreateAutoMapperConfig();
             var configuration = new ConfigurationSetup().CreateConfiguration();
             taxCalculator = new TaxCalculatorTaxJarApi(configuration, mapper);
+        }
+
+        [TestCleanup]
+        public void Cleanup()
+        {
+            //add code for clean up if needed
         }
 
         [TestMethod]
